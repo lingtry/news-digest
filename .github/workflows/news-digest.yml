@@ -15,6 +15,8 @@ jobs:
   fetch-and-send:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"  # 消除 Node.js 20 弃用警告
 
     steps:
       - name: 检出代码
