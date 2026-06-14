@@ -18,6 +18,7 @@ import urllib.request
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.header import Header
+from email.utils import formataddr
 from datetime import datetime, timedelta, timezone
 from typing import List, Dict, Optional, Tuple
 from collections import OrderedDict
@@ -419,7 +420,7 @@ def send_email(html_content: str, total_count: int) -> bool:
     now = datetime.now(timezone(timedelta(hours=8)))
     subject = f"📡 IT & AI 资讯 · {now.strftime('%m/%d %H:%M')} · {total_count}条"
     msg["Subject"] = Header(subject, "utf-8")
-    msg["From"] = Header(f"News Digest <{EMAIL_ADDRESS}>", "utf-8")
+    msg["From"] = formataddr(("News Digest", EMAIL_ADDRESS))
     msg["To"] = RECIPIENT_EMAIL
 
     msg.attach(MIMEText(html_content, "html", "utf-8"))
