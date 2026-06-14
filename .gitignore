@@ -2,4 +2,3 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 .env
-.sent_cache.json
