@@ -465,11 +465,7 @@ def main():
     for cat, articles in results.items():
         print(f"  {cat}: {len(articles)} 条")
 
-    if total == 0:
-        print("📭 没有新文章，跳过发送。")
-        return
-
-    # 构建邮件
+    # 始终构建并发送邮件（无新文章时发送空摘要）
     print(f"📧 构建邮件（共 {total} 条）...")
     html = build_email_html(results)
 
